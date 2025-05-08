@@ -10,6 +10,7 @@ resource "google_project_service" "services" {
     "container.googleapis.com",
     "cloudresourcemanager.googleapis.com",
     "storage.googleapis.com",
+    "compute.googleapis.com",
   ])
   project                    = var.project
   service                    = each.value
