@@ -11,13 +11,13 @@ resource "google_project_service" "services" {
     "compute.googleapis.com",
     "storage.googleapis.com",
   ])
-  project                    = var.project
+  project                    = var.project_id
   service                    = each.value
   disable_dependent_services = false
   disable_on_destroy         = false
 }
 
 provider "google" {
-  project = var.project
+  project = var.project_id
   region = var.region
 }
