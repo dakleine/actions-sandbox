@@ -6,13 +6,13 @@ terraform {
 }
 
 resource "google_project_service" "multiple_apis" {
-  for_each = toset({
+  for_each = toset([
     "cloudresourcemanager.googleapis.com",
     "serviceusage.googleapis.com",
     "storage.googleapis.com",
     "compute.googleapis.com",
     "container.googleapis.com",
-  })
+  ])
   project                    = var.project
   service                    = each.value
   disable_dependent_services = false
