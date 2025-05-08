@@ -5,20 +5,20 @@ terraform {
     }
 }
 
-resource "google_project_service" "services" {
-  for_each = toset([
-    "container.googleapis.com",
-    "cloudresourcemanager.googleapis.com",
-    "storage.googleapis.com",
-    "compute.googleapis.com",
-    "serviceusage.googleapis.com",
-
-  ])
-  project                    = var.project
-  service                    = each.value
-  disable_dependent_services = false
-  disable_on_destroy         = false
-}
+#resource "google_project_service" "services" {
+#  for_each = toset([
+#    "container.googleapis.com",
+#    "cloudresourcemanager.googleapis.com",
+#    "storage.googleapis.com",
+#    "compute.googleapis.com",
+#    "serviceusage.googleapis.com",
+#
+#  ])
+#  project                    = var.project
+#  service                    = each.value
+#  disable_dependent_services = false
+#  disable_on_destroy         = false
+#}
 
 provider "google" {
   project = var.project
