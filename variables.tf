@@ -4,7 +4,7 @@ locals {
     }
 }
 
-variable "project_id" {
+variable "project" {
     type= string
     description = "ID Google project"
 }
