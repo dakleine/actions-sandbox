@@ -1,6 +1,6 @@
 terraform {
     backend "gcs" { 
-      bucket  = "terraform-state-jb-cicdproject-home-infra"
+      bucket  = "terraform-state-cpl-home-infra"
       prefix  = "prod"
     }
 }
