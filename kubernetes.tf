@@ -18,7 +18,7 @@ data "terraform_remote_state" "gke" {
 # This fetches a new token, which will expire in 1 hour.
 data "google_client_config" "default" {}
 
-data "google_container_cluster" "gke-autopilot-basic" {
+data "google_container_cluster" "cluster" {
   name     = data.terraform_remote_state.gke.outputs.kubernetes_cluster_name
   location = data.terraform_remote_state.gke.outputs.region
 }
@@ -27,7 +27,7 @@ provider "kubernetes" {
   host = data.terraform_remote_state.gke.outputs.kubernetes_cluster_host
 
   token                  = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(data.google_container_cluster.gke-autopilot-basic.master_auth[0].cluster_ca_certificate)
+  cluster_ca_certificate = base64decode(data.google_container_cluster.cluster.master_auth[0].cluster_ca_certificate)
 }
 
 resource "kubernetes_deployment" "nginx" {
