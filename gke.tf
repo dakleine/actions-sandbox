@@ -3,7 +3,7 @@ resource "google_container_cluster" "default" {
   location = "us-central1"
 
   enable_autopilot = true
-
+  deletion_protection = false
   release_channel {
     channel = "REGULAR"
   }
