@@ -8,10 +8,10 @@ data "terraform_remote_state" "gke" {
 }
 
 # Retrieve GKE cluster information
-provider "google" {
-  project = data.terraform_remote_state.gke.outputs.project_id
-  region  = data.terraform_remote_state.gke.outputs.region
-}
+#provider "google" {
+#  project = data.terraform_remote_state.gke.outputs.project_id
+#  region  = data.terraform_remote_state.gke.outputs.region
+#}
 
 # Configure kubernetes provider with Oauth2 access token.
 # https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/client_config
