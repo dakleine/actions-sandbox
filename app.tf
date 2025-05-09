@@ -88,7 +88,7 @@ resource "kubernetes_service_v1" "default" {
       app = kubernetes_deployment_v1.default.spec[0].selector[0].match_labels.app
     }
 
-    ip_family_policy = "RequireDualStack"
+    #ip_family_policy = "RequireDualStack"
 
     port {
       port        = 80
