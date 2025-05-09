@@ -18,7 +18,7 @@ data "terraform_remote_state" "gke" {
 # This fetches a new token, which will expire in 1 hour.
 data "google_client_config" "default" {}
 
-data "google_container_cluster" "cluster" {
+data "google_container_cluster" "default" {
   name     = data.terraform_remote_state.gke.outputs.name
   location = data.terraform_remote_state.gke.outputs.location
 }
