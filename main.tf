@@ -22,8 +22,8 @@ resource "google_project_service" "multiple_apis" {
     update = "40m"
   }
 
-  disable_dependent_services = true
-  disable_on_destroy         = true
+  disable_dependent_services = false
+  disable_on_destroy         = false
 }
 
 provider "google" {
