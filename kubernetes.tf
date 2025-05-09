@@ -19,8 +19,8 @@ data "terraform_remote_state" "gke" {
 data "google_client_config" "default" {}
 
 data "google_container_cluster" "cluster" {
-  name     = data.terraform_remote_state.gke.outputs.kubernetes_cluster_name
-  location = data.terraform_remote_state.gke.outputs.region
+  name     = data.terraform_remote_state.gke.outputs.gke-autopilot-basic
+  location = data.terraform_remote_state.gke.outputs.us-central1
 }
 
 provider "kubernetes" {
