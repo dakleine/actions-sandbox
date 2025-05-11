@@ -45,7 +45,7 @@ resource "kubernetes_manifest" "gateway_gateway_ns_external_gateway" {
           "tls" = {
             "certificateRefs" = [
               {
-                "name" = "demo-cpl"
+                "name" = "gateway-secret"
               },
             ]
           }
