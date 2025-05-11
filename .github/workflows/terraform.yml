@@ -81,8 +81,8 @@ jobs:
         cat > pipeline.auto.tfvars <<EOF
         region="${{ vars.GCP_REGION }}" 
         project="${{ vars.GCP_PROJECT }}"
-        gateway-crt="${{ vars.GW_CRT }}"
-        gateway-key="${{ vars.GW_KEY }}"
+        gateway-crt="${{ secrets.GW_CRT }}"
+        gateway-key="${{ secrets.GW_KEY }}"
         EOF
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
