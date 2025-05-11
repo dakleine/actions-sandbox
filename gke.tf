@@ -4,9 +4,7 @@ resource "google_container_cluster" "default" {
 
   enable_autopilot = true
   deletion_protection = false
-  confidential_nodes {
-    enabled = true
-  }
+
   release_channel {
     channel = "REGULAR"
   }
