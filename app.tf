@@ -107,10 +107,3 @@ resource "kubernetes_service_v1" "default" {
 
   depends_on = [time_sleep.wait_service_cleanup]
 }
-
-# Provide time for Service cleanup
-resource "time_sleep" "wait_service_cleanup" {
-  depends_on = [google_container_cluster.default]
-
-  destroy_duration = "180s"
-}
