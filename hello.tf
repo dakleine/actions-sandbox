@@ -30,7 +30,7 @@ resource "kubernetes_deployment_v1" "hello" {
           name  = "hello-container"
 
           port {
-            container_port = 80
+            container_port = 8080
             name           = "hello-svc"
           }  
 
@@ -79,4 +79,38 @@ resource "kubernetes_deployment_v1" "hello" {
       }
     }
   }
+}
+
+resource "kubernetes_service_v1" "hello" {
+  metadata {
+    name = "example-hello--loadbalancer"
+    namespace = "hello"
+    annotations = {
+      "networking.gke.io/load-balancer-type" = "Internal" # Remove to create an external loadbalancer
+    }
+  }
+
+  spec {
+    selector = {
+      app = kubernetes_deployment_v1.default.spec[0].selector[0].match_labels.app
+    }
+
+    #ip_family_policy = "RequireDualStack"
+
+    port {
+      port        = 80
+      target_port = kubernetes_deployment_v1.default.spec[0].template[0].spec[0].container[0].port[0].name
+    }
+
+    type = "ClusterIP"
+  }
+
+  depends_on = [time_sleep.wait_service_cleanup]
+}
+
+# Provide time for Service cleanup
+resource "time_sleep" "wait_service_cleanup" {
+  depends_on = [google_container_cluster.default]
+
+  destroy_duration = "180s"
 }
