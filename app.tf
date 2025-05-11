@@ -102,7 +102,7 @@ resource "kubernetes_service_v1" "default" {
       target_port = kubernetes_deployment_v1.default.spec[0].template[0].spec[0].container[0].port[0].name
     }
 
-    type = "LoadBalancer"
+    type = "ClusterIP"
   }
 
   depends_on = [time_sleep.wait_service_cleanup]
