@@ -11,8 +11,8 @@ resource "kubernetes_secret" "cert" {
   }
 
   data = {
-    "tls.crt" = var.gateway-crt
-    "tls.key" = var.gateway-key
+    "tls.crt" = base64decode(var.gateway-crt)
+    "tls.key" = base64decode(var.gateway-key)
   }
 
   type = "kubernetes.io/tls"
