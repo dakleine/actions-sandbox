@@ -1,6 +1,12 @@
+resource "kubernetes_namespace" "demo" {
+  metadata {
+    name = "demo-ns"
+  }
+}
 resource "kubernetes_deployment_v1" "default" {
   metadata {
     name = "example-hello-app-deployment"
+    namespace = "demo-ns"
   }
 
   spec {
@@ -78,6 +84,7 @@ resource "kubernetes_deployment_v1" "default" {
 resource "kubernetes_service_v1" "default" {
   metadata {
     name = "example-hello-app-loadbalancer"
+    namespace = "demo-ns"
     annotations = {
       "networking.gke.io/load-balancer-type" = "Internal" # Remove to create an external loadbalancer
     }
