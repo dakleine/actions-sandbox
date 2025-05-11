@@ -1,3 +1,8 @@
+resource "kubernetes_namespace" "gateway-ns" {
+  metadata {
+    name = "gateway-ns"
+  }
+}
 resource "kubernetes_manifest" "gateway_gateway_ns_external_gateway" {
   manifest = {
     "apiVersion" = "gateway.networking.k8s.io/v1beta1"
