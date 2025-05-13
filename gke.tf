@@ -6,7 +6,7 @@ resource "google_container_cluster" "default" {
   deletion_protection = false
 
   release_channel {
-    channel = "REGULAR"
+    channel = "STABLE"
   }
 }
 
