@@ -104,8 +104,3 @@ jobs:
       run: terraform apply --auto-approve=true
       env:
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
-
-    - name: Terraform Destroy
-      run: terraform apply -destroy
-      env:
-        GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
